@@ -1,3 +1,11 @@
 td  {
     border: 1px solid black;
 }
+
+.red {
+    background-color: red;
+}
+
+h3 {
+    float: right;
+}

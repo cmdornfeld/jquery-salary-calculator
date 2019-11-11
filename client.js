@@ -2,17 +2,12 @@ $(document).ready(onReady);
 
 // global variable for employee array
 let employeeArray = [];
-// global variable for budget
-let budget = 0;
 
 
 function onReady() {
     // click handler to add employee upon click event
     $('#add-employee').on('click', addEmployee);
     $('#employee-table').on('click', '.delete', removeEmployee);
-    let el = $('#budget-total');
-    el.empty();
-    el.append(budget);
     showEmployee(employeeArray);
     calcMonthlyCost();
     
@@ -84,6 +79,6 @@ function calcMonthlyCost() {
         el.append(totalMonthlyBudget);
     
     if (totalMonthlyBudget >= 20000) {
-        $('#budget-total').css('red');
+        $('#budget-total').addClass('red');
     }
 }
