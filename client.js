@@ -2,6 +2,8 @@ $(document).ready(onReady);
 
 // global variable for employee array
 let employeeArray = [];
+// global variable for budget
+let budget = 0;
 
 
 function onReady() {
@@ -11,8 +13,8 @@ function onReady() {
     let el = $('#budget-total');
     el.empty();
     el.append(budget);
-    calcMonthlyCost();
     showEmployee(employeeArray);
+    calcMonthlyCost();
     
 }
 
@@ -54,7 +56,8 @@ function showEmployee(array) {
             <td>${employee.lastName}</td>
             <td>${employee.idNumber}</td>
             <td>${employee.title}</td>
-            <td>${employee.salary}</td>`
+            <td>${employee.salary}</td>
+            <td><button class=delete>Delete</button></td>`
         )
     }
     
@@ -68,14 +71,19 @@ function removeEmployee() {
     button.closest('tr').remove();
 }
 
-function calcMonthlyCost(array) {
+function calcMonthlyCost() {
     let totalSalary = 0
-    for (let i = 0; i < array.length; i++) {
-        totalSalary += Number(array[i].salary);
+    for (let i = 0; i < employeeArray.length; i++) {
+        totalSalary += Number(employeeArray[i].salary);
         
+    }
         let totalMonthlyBudget = totalSalary / 12
 
         let el = $('#budget-total');
+        el.empty();
+        el.append(totalMonthlyBudget);
+    
+    if (totalMonthlyBudget >= 20000) {
+        $('#budget-total').css('red');
     }
-    $('#total-budget').append(totalMonthlyBudget);
 }
